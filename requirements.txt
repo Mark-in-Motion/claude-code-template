@@ -1,0 +1,32 @@
+# Core web framework (choose one)
+# flask>=3.0.0
+# fastapi>=0.104.0
+# django>=4.2.0
+
+# Environment and configuration
+python-dotenv>=1.0.0
+
+# HTTP requests
+requests>=2.31.0
+
+# Database (uncomment as needed)
+# psycopg2-binary>=2.9.0    # PostgreSQL
+# pymongo>=4.6.0            # MongoDB  
+# sqlalchemy>=2.0.0         # SQL toolkit
+
+# Development and testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.12.0
+flake8>=6.1.0
+mypy>=1.8.0
+
+# API and data processing
+# pydantic>=2.5.0           # Data validation
+# marshmallow>=3.20.0       # Serialization
+# celery>=5.3.0             # Task queue
+# redis>=5.0.0              # Caching
+
+# Production server
+# gunicorn>=21.2.0          # WSGI server
+# uvicorn>=0.24.0           # ASGI server
