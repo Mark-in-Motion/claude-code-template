@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "# Replace with your lint command, e.g.: npm run lint --fix"
+          }
+        ]
+      }
+    ]
+  }
+}

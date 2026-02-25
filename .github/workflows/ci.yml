@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Node.js job — remove or adapt for your tech stack
+  node:
+    name: Node.js
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+  # Python job — uncomment and adapt if using Python
+  # python:
+  #   name: Python
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: "3.12"
+  #
+  #     - name: Install dependencies
+  #       run: pip install -r requirements.txt
+  #
+  #     - name: Lint
+  #       run: python -m ruff check .
+  #
+  #     - name: Test
+  #       run: python -m pytest
