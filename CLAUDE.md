@@ -129,6 +129,47 @@ needed. Claude will use this automatically for multi-step tasks.
 - Test edge cases and error conditions
 - Update tests when modifying existing functionality
 
+## Security
+
+### Pre-Commit Security Gate
+
+Before committing, run a security review — no exceptions, including rapid iteration sessions:
+
+> "Before I commit, do a full security review of everything changed this session. Check for exposed secrets, unconstrained inputs, missing error handling, data privacy issues, and anything risky in a production or shared environment."
+
+### Checklist
+
+**Secrets & API keys**
+- Never use `dangerouslyAllowBrowser: true` outside of `import.meta.env.DEV` guards
+- Never bundle secrets in the frontend (no `VITE_*` keys that reach the browser in non-local builds)
+- Route sensitive API calls through a server-side proxy in production
+
+**Proxy & backend**
+- Never forward raw client params to a third-party API without server-side validation
+- Enforce allowlists for model names, cap `max_tokens`, limit input size
+- Never use CORS wildcard (`*`) on internal proxies — restrict to known origins
+
+**Error handling**
+- Every external API call needs a `try/catch` — never silently return `null` on failure
+- No unhandled promise rejections — wrap all `await` calls that can throw
+
+**Data privacy**
+- Never send full application state to an external API unless required
+- Strip/minimise user or project data before including it in AI prompts
+
+**TypeScript**
+- Avoid `as any` on external API responses — use proper types or runtime validation
+
+### On Large Feature Branches
+
+After merging branches with new services, integrations, or infrastructure:
+
+> "Review this entire branch for security issues as if preparing it for a production code review. List every risk by severity."
+
+### Rule of Thumb
+
+> If it works locally but you haven't considered what happens in a shared or production environment — you're not done.
+
 ## Documentation Maintenance
 
 ### Files to Keep Updated
