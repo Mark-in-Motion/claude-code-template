@@ -11,14 +11,13 @@ requests>=2.31.0
 
 # Database (uncomment as needed)
 # psycopg2-binary>=2.9.0    # PostgreSQL
-# pymongo>=4.6.0            # MongoDB  
+# pymongo>=4.6.0            # MongoDB
 # sqlalchemy>=2.0.0         # SQL toolkit
 
 # Development and testing
-pytest>=7.4.0
+pytest>=8.3.0
 pytest-cov>=4.1.0
-black>=23.12.0
-flake8>=6.1.0
+ruff>=0.9.0
 mypy>=1.8.0
 
 # API and data processing
