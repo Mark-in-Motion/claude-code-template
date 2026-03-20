@@ -1,182 +1,182 @@
-# AI-Assisted Project Template
+# claude-code-template
 
-A comprehensive template for starting new AI-assisted development projects with optimal documentation structure and Claude Code integration from day one.
+A GitHub template for starting any software project with Claude Code integration, session-based documentation, and cross-platform setup built in from day one.
 
-## 🚀 Quick Start
-
-### Option 1: Use GitHub Template
-1. Click "Use this template" button on GitHub
-2. Create your new repository
-3. Clone to your local machine
-4. Run the setup script to customize for your project
-
-### Option 2: Manual Setup
-```bash
-# Clone this template
-git clone https://github.com/your-username/claude-code-template.git your-project-name
-cd your-project-name
-
-# Run setup script to customize
-./scripts/setup.sh    # Unix/Mac
-# or
-scripts\setup.bat     # Windows
-
-# Initialize as new git repository
-rm -rf .git
-git init
-git add .
-git commit -m "Initial commit from AI-assisted project template"
-```
-
-## 🏗️ Template Structure
-
-```
-├── .gitignore                    # Cross-platform ignore rules
-├── README.md                     # This file (customize for your project)
-├── CLAUDE.md                     # Claude Code instructions
-├── package.json                  # Node.js starter configuration
-├── requirements.txt              # Python starter dependencies
-├── docs/                         # Documentation system
-│   ├── PROJECT_CONTEXT.md        # Project overview and architecture
-│   ├── CURRENT_STATUS.md         # Real-time development status
-│   ├── ACTIVE_ROADMAP.md         # Feature roadmap and priorities
-│   ├── sessions/                 # Development session tracking
-│   │   └── latest-session.md     # Template for session notes
-│   ├── completed/                # Archive of completed features
-│   └── reference/                # Technical references and decisions
-├── src/                          # Source code directory
-├── public/                       # Static assets and public files
-└── scripts/                      # Setup and automation scripts
-    ├── setup.sh                  # Unix/Mac setup script
-    └── setup.bat                 # Windows setup script
-```
-
-## 📋 Setup Instructions
-
-### For Node.js Projects
-```bash
-# After running setup script
-npm install
-npm start           # Start development server
-npm run build       # Build for production
-npm test            # Run tests
-```
-
-### For Python Projects
-```bash
-# After running setup script
-pip install -r requirements.txt
-python app.py       # Start application
-python -m pytest   # Run tests (if pytest installed)
-```
-
-### For Other Tech Stacks
-1. Remove unused files (`package.json` for non-Node.js, `requirements.txt` for non-Python)
-2. Add your tech stack's configuration files
-3. Update `CLAUDE.md` with your specific build/test commands
-4. Customize documentation templates in `docs/` folder
-
-## 🤖 Claude Code Integration
-
-This template is optimized for development with [Claude Code](https://claude.ai/code). The documentation structure enables:
-
-### Session-Based Development
-- Track progress across development sessions
-- Maintain context between Claude Code interactions
-- Document decisions and architectural choices
-
-### Structured Documentation
-- **PROJECT_CONTEXT.md**: High-level project overview
-- **CURRENT_STATUS.md**: Real-time implementation tracking
-- **ACTIVE_ROADMAP.md**: Prioritized feature development
-- **Session tracking**: Detailed logs of development progress
-
-### Best Practices Integration
-- Automatic placeholder replacement during setup
-- Cross-platform compatibility
-- Consistent documentation standards
-- Code quality guidelines in CLAUDE.md
-
-## 🛠️ Customization Guide
-
-### 1. Project Basics
-After running setup script, customize:
-- Project name and description throughout documentation
-- Tech stack specific configurations
-- Build and test commands in CLAUDE.md
-
-### 2. Documentation
-- Update `docs/PROJECT_CONTEXT.md` with your project's specific architecture
-- Modify `docs/ACTIVE_ROADMAP.md` with your feature priorities
-- Customize session tracking format in `docs/sessions/`
-
-### 3. Development Workflow
-- Add project-specific scripts to `scripts/` folder
-- Configure your IDE/editor integration
-- Set up CI/CD pipelines as needed
-
-## 📝 Development Workflow
-
-### Starting Development
-1. Review `docs/CURRENT_STATUS.md` for current state
-2. Check `docs/ACTIVE_ROADMAP.md` for next priorities
-3. Create session file in `docs/sessions/` if starting significant work
-4. Begin development with clear goals
-
-### During Development
-- Update status documentation as features are implemented
-- Document architectural decisions and patterns
-- Test changes thoroughly
-- Keep session notes updated with progress and blockers
-
-### Ending Sessions
-- Update session documentation with accomplishments
-- Move completed features to appropriate status
-- Ensure code is in stable, committable state
-- Update roadmap if priorities have changed
-
-## 🌟 Features
-
-### Cross-Platform Support
-- Works on Windows, Mac, and Linux
-- Universal .gitignore covering common scenarios
-- Platform-specific setup scripts
-
-### Tech Stack Agnostic
-- Basic Node.js and Python starter files included
-- Easy to adapt for any technology stack
-- Generic folder structure for maximum flexibility
-
-### Documentation-Driven Development
-- Structured approach to project documentation
-- Session-based progress tracking
-- Clear separation of planning, development, and reference materials
-
-### AI-Assisted Optimization
-- Designed specifically for Claude Code workflows
-- Context preservation across development sessions
-- Best practices for AI-assisted development integrated
-
-## 🤝 Contributing
-
-This template is designed to be community-driven:
-1. Fork the repository
-2. Make improvements or add tech stack specific variants
-3. Submit pull request with clear description of changes
-4. Help make AI-assisted development more accessible
-
-## 📄 License
-
-This template is open source and available under the MIT License. Use it freely for any project, commercial or personal.
+> Clone it, run setup, and start building your actual idea — not the infrastructure.
 
 ---
 
-## 🚦 Next Steps
+## Which system prompt should I use?
 
-1. **Run setup script** to customize this template for your project
-2. **Update documentation** with your project-specific information  
-3. **Start development** using the session-based workflow
-4. **Customize CLAUDE.md** with your specific development commands
-5. **Remove this README section** and replace with your project's actual README content
+Pick the prompt from `prompts/` that matches your project type and reference it when starting a Claude session:
 
-Happy building! 🎉
+| My project is... | Use this prompt |
+|---|---|
+| A web app (frontend or fullstack) | `prompts/web-app.md` |
+| A backend API | `prompts/api-service.md` |
+| A command-line tool | `prompts/cli-tool.md` |
+| A data or ML pipeline | `prompts/data-pipeline.md` |
+| Something else | `prompts/general.md` |
+
+---
+
+## Quick Start
+
+### Option 1: GitHub Template
+1. Click **Use this template** on GitHub
+2. Clone your new repo
+3. Run the setup script
+
+### Option 2: Clone directly
+```bash
+git clone https://github.com/your-username/claude-code-template.git your-project-name
+cd your-project-name
+rm -rf .git
+./scripts/setup.sh    # Unix/Mac
+# or
+scripts\setup.bat     # Windows
+```
+
+### Setup flags
+```bash
+./scripts/setup.sh             # Interactive setup
+./scripts/setup.sh --dry-run   # Preview substitutions before applying
+```
+
+---
+
+## What the setup script does
+
+1. Prompts for: project name, description, type, team size, tech stack, and deployment target
+2. Substitutes all `{{PLACEHOLDER}}` tokens across the template files
+3. Creates a starter source file for your stack
+4. Validates that no placeholders were missed
+5. Optionally runs `git init` and makes the initial commit
+
+---
+
+## Template Structure
+
+```
+claude-code-template/
+│
+├── CLAUDE.md                          # Claude Code instructions, constraints, workflow
+├── CONTRIBUTING.md                    # How to extend this template
+├── LICENSE                            # MIT
+├── README.md                          # This file
+├── .env.example                       # Environment variable template
+├── package.json                       # Node.js starter config
+├── requirements.txt                   # Python starter dependencies
+├── tsconfig.json                      # TypeScript config
+│
+├── .claude/
+│   ├── commands/
+│   │   ├── new-session.md             # /new-session — start a dated session file
+│   │   ├── update-status.md           # /update-status — summarize current state
+│   │   ├── context.md                 # /context — compact re-orientation dump
+│   │   ├── start-feature.md           # /start-feature [name] — branch + session + roadmap
+│   │   ├── close-feature.md           # /close-feature — archive + mark complete
+│   │   ├── bug.md                     # /bug [desc] — log to docs/bugs.md
+│   │   ├── checkpoint.md              # /checkpoint — snapshot status + roadmap
+│   │   └── review.md                  # /review — security gate before commit
+│   ├── settings.json                  # Shared hooks (destructive-op warnings, lint-on-save)
+│   ├── settings.local.json            # Machine-specific overrides (gitignored)
+│   └── settings.local.json.example   # Example of local overrides
+│
+├── prompts/
+│   ├── general.md                     # Default catch-all system prompt
+│   ├── web-app.md                     # Frontend/fullstack web apps
+│   ├── api-service.md                 # Backend APIs
+│   ├── cli-tool.md                    # Command-line tools
+│   └── data-pipeline.md               # Data and ML projects
+│
+├── docs/
+│   ├── PROJECT_CONTEXT.md             # Architecture, tech stack, goals
+│   ├── CURRENT_STATUS.md              # Real-time dev progress
+│   ├── ACTIVE_ROADMAP.md              # Prioritized feature plan
+│   ├── DECISIONS.md                   # ADR log — why decisions were made
+│   ├── KNOWN_ISSUES.md                # Accepted limitations and trade-offs
+│   ├── ONBOARDING.md                  # 5-minute onboarding for new devs or Claude
+│   ├── bugs.md                        # Reported bug log (written by /bug command)
+│   ├── sessions/
+│   │   └── latest-session.md          # Session template (Goal / Done / Blockers / Next)
+│   ├── completed/                     # Archived sessions and checkpoints
+│   └── reference/
+│       └── skills-examples.md         # Guide for writing custom slash commands
+│
+├── src/                               # Application source code
+├── public/                            # Static assets
+│
+├── scripts/
+│   ├── setup.sh                       # Unix/Mac setup (supports --dry-run)
+│   └── setup.bat                      # Windows setup (full parity with setup.sh)
+│
+└── .github/
+    └── workflows/
+        ├── ci.yml                     # Full CI — Node, Python, Go, Rust (comment in your stack)
+        ├── lint.yml                   # Lint on every push to every branch
+        └── deploy.yml                 # Deployment placeholder — Vercel, Railway, Fly.io
+```
+
+---
+
+## Claude Code Integration
+
+### Custom Slash Commands
+
+| Command | What it does |
+|---|---|
+| `/new-session` | Creates a dated session file, asks for your goal |
+| `/update-status` | Reads git log + CURRENT_STATUS.md, summarizes state |
+| `/context` | Compact read-only dump for re-orienting mid-session |
+| `/start-feature [name]` | Creates feature branch, session file, updates roadmap |
+| `/close-feature` | Archives session, marks feature done in status + roadmap |
+| `/bug [description]` | Appends bug entry to `docs/bugs.md` |
+| `/checkpoint` | Snapshots status + roadmap to dated archive, optional commit |
+| `/review` | Runs security gate checklist against staged changes |
+
+### Hooks
+Three hooks are pre-configured in `.claude/settings.json`:
+- **Destructive bash warning** — fires before `rm -rf` and similar commands
+- **File overwrite warning** — fires when writing to a file that already has content
+- **Last-modified log** — timestamps file changes to `docs/.last-modified`
+
+Add your lint-on-save command to the fourth hook slot in `settings.json`.
+
+### Session Workflow
+```
+/new-session → develop → /bug [if needed] → /checkpoint → /review → commit
+```
+
+---
+
+## Stack Support
+
+The setup script auto-configures commands for:
+
+| Stack | Build | Start | Test | Lint |
+|---|---|---|---|---|
+| Node.js | `npm run build` | `node --watch src/` | `npm test` | `npm run lint` |
+| Node.js + TS | `tsc` | `node --watch --experimental-strip-types` | `npm test` | `npm run lint` |
+| Python | `pip install -e .` | `python app.py` | `python -m pytest` | `python -m ruff check .` |
+| Go | `go build` | `go run main.go` | `go test ./...` | `go fmt ./...` |
+| Rust | `cargo build` | `cargo run` | `cargo test` | `cargo clippy` |
+| Custom | prompted | prompted | prompted | prompted |
+
+---
+
+## Built with this template
+
+*Nothing here yet — yours could be first.*
+
+If you built something with this template, open a PR to add it here.
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add stack support, new slash commands, or new placeholder tokens.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

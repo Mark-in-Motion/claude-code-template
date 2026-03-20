@@ -2,9 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project Type
+
+{{PROJECT_TYPE}}
+
 ## Current Focus
 
-<!-- One line: what is being worked on right now. Update this manually each session. -->
+<!-- One line: what is being worked on right now. Update this at the start of each session. -->
 {{DESCRIPTION}}
 
 ## Project Information
@@ -14,14 +18,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Tech Stack:** {{TECH_STACK}}
 **Last Updated:** {{DATE}}
 
+## Constraints
+
+Claude Code must **never** do the following without explicit user confirmation:
+
+- Delete any file or directory (`rm`, `rmdir`, or equivalent)
+- Modify `.env`, `.env.local`, or any other environment file — remind the user to update it manually instead
+- Push to `main` or `master` directly — always create a branch and open a PR
+- Run `rm -rf` on any directory
+- Install packages globally without asking first
+- Commit secrets, tokens, API keys, or credentials
+- Overwrite a file with user-edited content without showing what will change first
+
 ## Project Setup and Development Commands
 
 ### Initial Setup
 Run the setup script to replace placeholders with your project details:
 ```bash
-./scripts/setup.sh    # Unix/Mac
+./scripts/setup.sh             # Unix/Mac
+./scripts/setup.sh --dry-run   # Preview substitutions before applying
 # or
-scripts\setup.bat     # Windows
+scripts\setup.bat              # Windows
 ```
 
 ### Development Commands
@@ -47,15 +64,21 @@ This project follows a structured documentation approach:
 - `docs/PROJECT_CONTEXT.md` - Project overview, architecture, and key decisions
 - `docs/CURRENT_STATUS.md` - Real-time implementation progress tracking
 - `docs/ACTIVE_ROADMAP.md` - Prioritized features and development roadmap
+- `docs/DECISIONS.md` - Lightweight ADR log: why decisions were made
+- `docs/KNOWN_ISSUES.md` - Structural limitations and accepted trade-offs
+- `docs/ONBOARDING.md` - Get up to speed in 5 minutes (new dev or fresh Claude session)
+- `docs/bugs.md` - Reported bugs log (appended to by `/bug` command)
 - `docs/sessions/` - Session-based development tracking with detailed logs
-- `docs/completed/` - Archive of completed features and implementation notes
+- `docs/completed/` - Archive of completed features and session snapshots
 - `docs/reference/` - Technical references, API docs, and architectural decisions
+- `docs/reference/skills-examples.md` - Guide for writing custom slash commands
 
 ### Code Organization
 ```
 {{PROJECT_NAME}}/
 ├── src/              # Main application source code
 ├── public/           # Static assets and public files
+├── prompts/          # Swappable system prompts per project type
 ├── scripts/          # Build, deployment, and utility scripts
 └── docs/             # Comprehensive project documentation
 ```
@@ -67,19 +90,23 @@ This project follows a structured documentation approach:
 ### Starting a Development Session
 1. Read `docs/CURRENT_STATUS.md` to understand current state
 2. Run `/new-session` to create a dated session file and set goals
+3. Run `/context` at any point to re-orient mid-session
 
 Use `/update-status` at any point to get a quick summary of where things stand.
 
 ### During Development
 - Update `docs/CURRENT_STATUS.md` as features are implemented
-- Document architectural decisions and design patterns as they emerge
+- Document architectural decisions in `docs/DECISIONS.md` as they emerge
 - Test thoroughly before moving to next task
 - Run project-specific linting and type checking commands
 - Reference code locations using `file:line` notation in documentation
+- Use `/bug [description]` to log any bugs discovered during development
 
 ### Ending a Session
 - Update session file with accomplishments and any blockers encountered
 - Move completed features to appropriate status in `CURRENT_STATUS.md`
+- Run `/checkpoint` to snapshot current state before leaving
+- Run `/review` before any commit to run the security gate
 - Ensure codebase is in stable, committable state
 - Update `ACTIVE_ROADMAP.md` if priorities have shifted
 
@@ -87,15 +114,42 @@ Use `/update-status` at any point to get a quick summary of where things stand.
 
 ### Custom Slash Commands
 Project-specific commands are in `.claude/commands/`:
+
+**Session management**
 - `/new-session` — Creates a dated session file and prompts for goals
 - `/update-status` — Reads git log + CURRENT_STATUS.md and summarizes state
+- `/context` — Compact read-only project summary for re-orienting mid-session
+- `/checkpoint` — Snapshots current status + roadmap to dated archive, optional commit
+
+**Feature workflow**
+- `/start-feature [name]` — Creates feature branch, new session file, updates ACTIVE_ROADMAP.md
+- `/close-feature` — Marks feature done, archives session, updates status + roadmap
+
+**Maintenance**
+- `/bug [description]` — Logs a bug entry to `docs/bugs.md`
+- `/review` — Runs the security gate checklist against staged changes before commit
 
 Add your own by creating `.claude/commands/your-command.md`.
 
+### Prompts Directory
+`prompts/` contains swappable system prompts for different project types:
+- `prompts/general.md` — Default catch-all
+- `prompts/web-app.md` — Frontend/fullstack web apps
+- `prompts/api-service.md` — Backend APIs
+- `prompts/cli-tool.md` — Command-line tools
+- `prompts/data-pipeline.md` — Data and ML projects
+
+Reference the relevant prompt at the start of a Claude session to load project-type-specific conventions.
+
 ### Hooks
-`.claude/settings.json` contains a PostToolUse hook template for lint-on-save.
-Customize the `command` field with your actual lint command (e.g., `npm run lint --fix`).
-Personal/machine-specific overrides go in `.claude/settings.local.json` (gitignored).
+`.claude/settings.json` configures three hooks:
+
+- **PreToolUse / Bash** — Warns before destructive shell commands (`rm -rf`, truncation, etc.)
+- **PreToolUse / Write** — Warns when overwriting an existing file that has content
+- **PostToolUse / Edit|Write** — Logs a timestamp to `docs/.last-modified` after file changes
+- **PostToolUse / Edit|Write** — Lint-on-save (configure the command for your stack)
+
+Personal/machine-specific overrides go in `.claude/settings.local.json` (gitignored). See `.claude/settings.local.json.example` for options.
 
 ### MCP Servers
 Add MCP servers in `.claude/settings.json` under `"mcpServers"` to give Claude
@@ -133,16 +187,29 @@ needed. Claude will use this automatically for multi-step tasks.
 
 ### Pre-Commit Security Gate
 
-Before committing, run a security review — no exceptions, including rapid iteration sessions:
+Before committing, run `/review` or do a manual check — no exceptions, including rapid iteration sessions:
 
 > "Before I commit, do a full security review of everything changed this session. Check for exposed secrets, unconstrained inputs, missing error handling, data privacy issues, and anything risky in a production or shared environment."
 
 ### Checklist
 
 **Secrets & API keys**
+- Scan for hardcoded strings matching common key prefixes: `sk-`, `ghp_`, `xoxb-`, `AIza`, `AKIA`
+- Scan for literal assignments: `password =`, `secret =`, `api_key =`, `token =` in source files
+- Check that `.env` files are not staged (`git diff --cached` must not include `.env`)
 - Never use `dangerouslyAllowBrowser: true` outside of `import.meta.env.DEV` guards
 - Never bundle secrets in the frontend (no `VITE_*` keys that reach the browser in non-local builds)
 - Route sensitive API calls through a server-side proxy in production
+
+**Injection & input validation**
+- Check for raw SQL string concatenation (e.g., `"SELECT * FROM users WHERE id = " + userId`)
+- Check for `eval()` calls on user-supplied or externally sourced data
+- Check for unvalidated `req.body` or `request.json()` data passed directly to database queries
+- Check for shell command construction from user input (`exec`, `spawn`, `subprocess.run` with string interpolation)
+
+**File system**
+- Check for path traversal patterns (`../` in user-supplied file paths)
+- Check for file writes to paths derived from user input without sanitization
 
 **Proxy & backend**
 - Never forward raw client params to a third-party API without server-side validation
@@ -176,13 +243,15 @@ After merging branches with new services, integrations, or infrastructure:
 - `docs/PROJECT_CONTEXT.md` - When architecture, tech stack, or core concepts change
 - `docs/CURRENT_STATUS.md` - After every significant development session
 - `docs/ACTIVE_ROADMAP.md` - When feature priorities change or items are completed
+- `docs/DECISIONS.md` - When any significant architectural or design decision is made
+- `docs/KNOWN_ISSUES.md` - When structural limitations are discovered or accepted
 - `CLAUDE.md` (this file) - When development commands or workflow changes
 
 ### Session Documentation Best Practices
 - Create dated files for each significant development session
-- Include session goals, key accomplishments, blockers, and next steps
-- Document decision rationale for future reference
-- Reference specific code locations when describing changes
+- Keep session files to 4 sections: Goal / Done / Blockers / Next Step
+- Document decision rationale in `docs/DECISIONS.md` for future reference
+- Reference specific code locations when describing changes (`file:line`)
 - Archive completed sessions to `docs/completed/` when projects finish
 
 ## Project-Specific Configuration

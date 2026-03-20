@@ -1,34 +1,27 @@
 # New Development Session
 
-Start a new development session by:
+Start a new development session:
 
-1. Reading `docs/CURRENT_STATUS.md` to understand the current project state
-2. Getting today's date and creating a new session file at `docs/sessions/YYYY-MM-DD.md` with this structure:
+1. Read `docs/CURRENT_STATUS.md` to understand the current project state
+2. Get today's date and create a new session file at `docs/sessions/YYYY-MM-DD.md` with this structure:
 
 ```markdown
 # Session: YYYY-MM-DD
 
-## Focus
-[One sentence describing what this session will accomplish]
+## Goal
+[One sentence: what this session will accomplish]
 
-## Goals
-- [ ] Goal 1
-- [ ] Goal 2
+## Done
+- [Add items here as work completes]
 
-## Progress
+## Blockers
+- [Anything that stopped progress, or "None"]
 
-### Completed
-(fill in as work is done)
-
-### Blockers
-(note any issues encountered)
-
-## Next Steps
-(fill in at end of session)
+## Next Step
+[Single most important action for the next session]
 ```
 
-3. Asking the user: "What is the focus for this session?"
-4. Filling in the Focus and Goals sections based on their answer
-5. Confirming the session file was created and is ready
+3. Ask the user: "What is the goal for this session?"
+4. Fill in the Goal section with their answer and confirm the file was created
 
 Do not read `docs/ACTIVE_ROADMAP.md` unless the user asks — keep session startup fast.

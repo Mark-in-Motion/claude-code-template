@@ -1,0 +1,56 @@
+name: Deploy
+
+# Runs on merge to main only.
+# Uncomment the deployment block that matches your platform and fill in
+# the required secrets in your GitHub repository settings.
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Vercel ──────────────────────────────────────────────────────────
+      # Docs: https://vercel.com/docs/deployments/deploy-hooks
+      #
+      # Required secrets: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
+      #
+      # - name: Deploy to Vercel
+      #   uses: amondnet/vercel-action@v25
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      #     vercel-args: "--prod"
+
+      # ── Railway ──────────────────────────────────────────────────────────
+      # Docs: https://docs.railway.app/guides/github-actions
+      #
+      # Required secrets: RAILWAY_TOKEN
+      #
+      # - name: Deploy to Railway
+      #   uses: bervProject/railway-deploy@main
+      #   with:
+      #     railway_token: ${{ secrets.RAILWAY_TOKEN }}
+      #     service: "your-service-name"
+
+      # ── Fly.io ──────────────────────────────────────────────────────────
+      # Docs: https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/
+      #
+      # Required secrets: FLY_API_TOKEN
+      #
+      # - name: Deploy to Fly.io
+      #   uses: superfly/flyctl-actions/setup-flyctl@master
+      # - run: flyctl deploy --remote-only
+      #   env:
+      #     FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      # ── Placeholder ─────────────────────────────────────────────────────
+      # Remove this step once you've uncommented a real deployment block above.
+      - name: No deployment configured
+        run: echo "No deployment target configured. Edit .github/workflows/deploy.yml to set one up."

@@ -1,15 +1,15 @@
-name: CI
+name: Lint
+
+# Runs on every push to every branch for fast feedback on feature branches.
+# Keep this fast — linting only, no tests.
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
-  # Node.js job — uncomment and adapt if using Node.js
-  node:
-    name: Node.js
+  # Node.js lint — uncomment if using Node.js
+  lint-node:
+    name: Lint (Node.js)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,12 +26,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Test
-        run: npm test
-
-  # Python job — uncomment and adapt if using Python
-  # python:
-  #   name: Python
+  # Python lint — uncomment if using Python
+  # lint-python:
+  #   name: Lint (Python)
   #   runs-on: ubuntu-latest
   #   steps:
   #     - uses: actions/checkout@v4
@@ -41,18 +38,15 @@ jobs:
   #       with:
   #         python-version: "3.12"
   #
-  #     - name: Install dependencies
-  #       run: pip install -r requirements.txt
+  #     - name: Install ruff
+  #       run: pip install ruff
   #
   #     - name: Lint
-  #       run: python -m ruff check .
-  #
-  #     - name: Test
-  #       run: python -m pytest
+  #       run: ruff check .
 
-  # Go job — uncomment and adapt if using Go
-  # go:
-  #   name: Go
+  # Go lint — uncomment if using Go
+  # lint-go:
+  #   name: Lint (Go)
   #   runs-on: ubuntu-latest
   #   steps:
   #     - uses: actions/checkout@v4
@@ -62,30 +56,20 @@ jobs:
   #       with:
   #         go-version: "1.22"
   #
-  #     - name: Build
-  #       run: go build ./...
-  #
-  #     - name: Test
-  #       run: go test ./...
-  #
   #     - name: Vet
   #       run: go vet ./...
 
-  # Rust job — uncomment and adapt if using Rust
-  # rust:
-  #   name: Rust
+  # Rust lint — uncomment if using Rust
+  # lint-rust:
+  #   name: Lint (Rust)
   #   runs-on: ubuntu-latest
   #   steps:
   #     - uses: actions/checkout@v4
   #
   #     - name: Set up Rust
   #       uses: dtolnay/rust-toolchain@stable
-  #
-  #     - name: Build
-  #       run: cargo build
-  #
-  #     - name: Test
-  #       run: cargo test
+  #       with:
+  #         components: clippy
   #
   #     - name: Clippy
   #       run: cargo clippy -- -D warnings
