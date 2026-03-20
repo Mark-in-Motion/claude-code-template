@@ -117,3 +117,6 @@ temp/
 
 # Claude Code personal settings (machine-specific, not for sharing)
 .claude/settings.local.json
+
+# Private planning and blueprints (local only, not for public repo)
+blueprints/
