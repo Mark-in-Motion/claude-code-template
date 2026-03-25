@@ -1,5 +1,10 @@
 # claude-code-template
 
+[![CI](https://github.com/Mark-in-Motion/claude-code-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Mark-in-Motion/claude-code-template/actions/workflows/ci.yml)
+[![Lint](https://github.com/Mark-in-Motion/claude-code-template/actions/workflows/lint.yml/badge.svg)](https://github.com/Mark-in-Motion/claude-code-template/actions/workflows/lint.yml)
+[![CodeQL](https://github.com/Mark-in-Motion/claude-code-template/actions/workflows/codeql.yml/badge.svg)](https://github.com/Mark-in-Motion/claude-code-template/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A GitHub template for starting any software project with Claude Code integration, session-based documentation, and cross-platform setup built in from day one.
 
 > Clone it, run setup, and start building your actual idea — not the infrastructure.
