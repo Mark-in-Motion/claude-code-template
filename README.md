@@ -50,6 +50,25 @@ scripts\setup.bat     # Windows
 
 ---
 
+## Using with Claude Code
+
+After cloning the template, run `./scripts/setup.sh` first so all `{{PLACEHOLDER}}` tokens are replaced with your project details. Then open Claude Code from the repository root and start with:
+
+```text
+/orient
+```
+
+`/orient` reads the onboarding docs, loads the prompt that matches your project type, summarizes the repo structure, and waits for your confirmation before creating or changing anything.
+
+Typical flow:
+1. Clone the template
+2. Run `./scripts/setup.sh`
+3. Open Claude Code from the repo root
+4. Run `/orient`
+5. Confirm the first build direction, then start implementation
+
+---
+
 ## What the setup script does
 
 1. Prompts for: project name, description, type, team size, tech stack, and deployment target

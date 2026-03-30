@@ -77,6 +77,8 @@ Read `docs/KNOWN_ISSUES.md` before building anything that touches known problem 
 
 ## How development sessions work
 
+For a brand-new project, start with `/orient` after running `./scripts/setup.sh`.
+
 1. Run `/new-session` to create a dated session file with your goal
 2. Work — update the session file as you go
 3. Run `/checkpoint` before finishing to snapshot current state

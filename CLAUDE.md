@@ -119,6 +119,7 @@ Project-specific commands are in `.claude/commands/`:
 
 **Session management**
 - `/new-session` — Creates a dated session file and prompts for goals
+- `/orient` — Reads onboarding docs and loads the matching project prompt before any work begins
 - `/update-status` — Reads git log + CURRENT_STATUS.md and summarizes state
 - `/context` — Compact read-only project summary for re-orienting mid-session
 - `/checkpoint` — Snapshots current status + roadmap to dated archive, optional commit
