@@ -88,7 +88,9 @@ Typical flow:
 3. Run the setup script for your platform
 4. Open Claude Code from the repo root
 5. Run `/orient`
-6. Confirm the first build direction, then start implementation
+6. Confirm the first thing you want built
+7. Create or place a blueprint in `docs/blueprints/`
+8. Ask Claude Code to read the blueprint and then start implementation
 
 ---
 
