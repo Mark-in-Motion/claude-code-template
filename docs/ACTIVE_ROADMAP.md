@@ -123,54 +123,6 @@
 - {{MILESTONE_3_DELIVERABLE_1}}
 - {{MILESTONE_3_DELIVERABLE_2}}
 
-### Critical Path Dependencies
-```
-{{CRITICAL_PATH}}
-# Example:
-# Database Design → API Development → Frontend Integration → Testing → Deployment
-# 
-# Key Dependencies:
-# - User Auth must be complete before user-specific features
-# - Payment integration requires security audit completion
-# - Mobile app depends on API stability
-```
-
-## 🔄 Iteration Planning
-
-### Current Sprint/Iteration
-**Sprint:** {{CURRENT_SPRINT}}
-**Duration:** {{SPRINT_DURATION}}
-**Goal:** {{SPRINT_GOAL}}
-
-**Sprint Backlog:**
-- [ ] {{SPRINT_TASK_1}} - {{TASK_1_ASSIGNEE}} - {{TASK_1_ESTIMATE}}
-- [ ] {{SPRINT_TASK_2}} - {{TASK_2_ASSIGNEE}} - {{TASK_2_ESTIMATE}}
-- [ ] {{SPRINT_TASK_3}} - {{TASK_3_ASSIGNEE}} - {{TASK_3_ESTIMATE}}
-
-**Sprint Capacity:** {{SPRINT_CAPACITY}}
-**Committed Points:** {{COMMITTED_POINTS}}
-
-### Next Sprint Planning
-**Proposed Focus:** {{NEXT_SPRINT_FOCUS}}
-**Potential Items:**
-- {{NEXT_SPRINT_ITEM_1}}
-- {{NEXT_SPRINT_ITEM_2}}
-- {{NEXT_SPRINT_ITEM_3}}
-
-## 🎯 Success Metrics & KPIs
-
-### Development Metrics
-- **Velocity:** {{DEVELOPMENT_VELOCITY}} story points/sprint
-- **Feature Completion Rate:** {{COMPLETION_RATE}}%
-- **Bug Discovery Rate:** {{BUG_RATE}} bugs/feature
-- **Technical Debt Score:** {{TECH_DEBT_SCORE}}
-
-### Product Metrics (Post-Launch)
-- **User Adoption:** {{USER_ADOPTION_TARGET}}
-- **Performance:** {{PERFORMANCE_TARGET}}
-- **Uptime:** {{UPTIME_TARGET}}
-- **User Satisfaction:** {{SATISFACTION_TARGET}}
-
 ## 🚫 Out of Scope (For Now)
 
 ### Explicitly Deferred Features
@@ -181,22 +133,6 @@
 ### Future Considerations
 - **{{FUTURE_CONSIDERATION_1}}** - {{CONSIDERATION_NOTES}}
 - **{{FUTURE_CONSIDERATION_2}}** - {{CONSIDERATION_NOTES}}
-
-## 📝 Change Log
-
-### Recent Roadmap Changes
-**{{CHANGE_DATE_1}}:**
-- {{ROADMAP_CHANGE_1}}
-- {{ROADMAP_CHANGE_2}}
-
-**{{CHANGE_DATE_2}}:**
-- {{ROADMAP_CHANGE_3}}
-- {{ROADMAP_CHANGE_4}}
-
-### Scope Adjustments
-- **Added:** {{SCOPE_ADDITION}} - {{ADDITION_REASON}}
-- **Removed:** {{SCOPE_REMOVAL}} - {{REMOVAL_REASON}}
-- **Modified:** {{SCOPE_MODIFICATION}} - {{MODIFICATION_REASON}}
 
 ## 🔍 Risk Assessment
 
@@ -223,15 +159,7 @@
 
 **Status Legend:**
 - ✅ Complete
-- 🔄 In Progress  
+- 🔄 In Progress
 - ⏳ Blocked
 - 📋 Ready to Start
 - ❌ Not Started
-
-**Update Guidelines:**
-Update this roadmap when:
-- Priorities change due to user feedback or market conditions
-- New requirements are discovered during development
-- Timeline estimates prove incorrect
-- Major technical decisions affect feature scope
-- Milestones are completed or need adjustment

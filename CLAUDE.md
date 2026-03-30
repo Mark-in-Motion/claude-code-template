@@ -64,6 +64,8 @@ This project follows a structured documentation approach:
 - `docs/PROJECT_CONTEXT.md` - Project overview, architecture, and key decisions
 - `docs/CURRENT_STATUS.md` - Real-time implementation progress tracking
 - `docs/ACTIVE_ROADMAP.md` - Prioritized features and development roadmap
+- `docs/blueprints/` - Active feature plans and implementation blueprints
+- `docs/architecture/security-posture.md` - Standing security constraints and trust boundaries
 - `docs/DECISIONS.md` - Lightweight ADR log: why decisions were made
 - `docs/KNOWN_ISSUES.md` - Structural limitations and accepted trade-offs
 - `docs/ONBOARDING.md` - Get up to speed in 5 minutes (new dev or fresh Claude session)
@@ -243,6 +245,8 @@ After merging branches with new services, integrations, or infrastructure:
 - `docs/PROJECT_CONTEXT.md` - When architecture, tech stack, or core concepts change
 - `docs/CURRENT_STATUS.md` - After every significant development session
 - `docs/ACTIVE_ROADMAP.md` - When feature priorities change or items are completed
+- `docs/blueprints/` - When an active feature plan changes or a new blueprint is created
+- `docs/architecture/security-posture.md` - When security constraints or trust boundaries change
 - `docs/DECISIONS.md` - When any significant architectural or design decision is made
 - `docs/KNOWN_ISSUES.md` - When structural limitations are discovered or accepted
 - `CLAUDE.md` (this file) - When development commands or workflow changes

@@ -40,6 +40,8 @@ cp .env.example .env
 | `prompts/` | System prompts — pick the one matching this project type |
 | `docs/CURRENT_STATUS.md` | What's built, what's in progress, what's blocked |
 | `docs/ACTIVE_ROADMAP.md` | Prioritized feature plan |
+| `docs/blueprints/` | Active feature blueprints and implementation plans |
+| `docs/architecture/` | Standing architecture and security references |
 | `docs/DECISIONS.md` | Why key decisions were made |
 | `docs/KNOWN_ISSUES.md` | Structural limitations we're living with |
 | `docs/bugs.md` | Reported bugs log |

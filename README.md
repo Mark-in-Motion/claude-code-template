@@ -34,7 +34,7 @@ Pick the prompt from `prompts/` that matches your project type and reference it 
 
 ### Option 2: Clone directly
 ```bash
-git clone https://github.com/your-username/claude-code-template.git your-project-name
+git clone https://github.com/Mark-in-Motion/claude-code-template.git your-project-name
 cd your-project-name
 rm -rf .git
 ./scripts/setup.sh    # Unix/Mac

@@ -120,6 +120,11 @@ temp/
 
 # Private planning and blueprints (local only, not for public repo)
 blueprints/
+!docs/blueprints/
+!docs/blueprints/**
+!docs/archive/
+!docs/archive/blueprints/
+!docs/archive/blueprints/**
 
 # Local prompt overrides (personal system prompt customizations)
 prompts/*.local.md
