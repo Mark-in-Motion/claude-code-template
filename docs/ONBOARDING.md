@@ -77,7 +77,19 @@ Read `docs/KNOWN_ISSUES.md` before building anything that touches known problem 
 
 ## How development sessions work
 
-For a brand-new project, start with `/orient` after running `./scripts/setup.sh`.
+For a brand-new project, start with `/orient` after running the setup script for your platform from the repo root.
+
+**Mac**
+```bash
+cd your-project-name
+./scripts/setup.sh
+```
+
+**Windows**
+```bat
+cd your-project-name
+scripts\setup.bat
+```
 
 1. Run `/new-session` to create a dated session file with your goal
 2. Work — update the session file as you go

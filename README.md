@@ -30,16 +30,23 @@ Pick the prompt from `prompts/` that matches your project type and reference it 
 ### Option 1: GitHub Template
 1. Click **Use this template** on GitHub
 2. Clone your new repo
-3. Run the setup script
+3. Run the setup script from the repo root
 
 ### Option 2: Clone directly
+**Mac**
 ```bash
 git clone https://github.com/Mark-in-Motion/claude-code-template.git your-project-name
 cd your-project-name
 rm -rf .git
-./scripts/setup.sh    # Unix/Mac
-# or
-scripts\setup.bat     # Windows
+./scripts/setup.sh
+```
+
+**Windows**
+```bat
+git clone https://github.com/Mark-in-Motion/claude-code-template.git your-project-name
+cd your-project-name
+rmdir /s /q .git
+scripts\setup.bat
 ```
 
 ### Setup flags
@@ -52,14 +59,15 @@ scripts\setup.bat     # Windows
 
 ## Using with Claude Code
 
-After cloning the template, change into the repo root and run the setup script first so all `{{PLACEHOLDER}}` tokens are replaced with your project details:
+After cloning the template, open a terminal in the repo root and run the setup script first so all `{{PLACEHOLDER}}` tokens are replaced with your project details.
 
+**Mac**
 ```bash
 cd your-project-name
 ./scripts/setup.sh
 ```
 
-On Windows:
+**Windows**
 
 ```bat
 cd your-project-name
@@ -76,10 +84,11 @@ Then open Claude Code from the repository root and start with:
 
 Typical flow:
 1. Clone the template
-2. Run `./scripts/setup.sh`
-3. Open Claude Code from the repo root
-4. Run `/orient`
-5. Confirm the first build direction, then start implementation
+2. Open a terminal in the cloned folder
+3. Run the setup script for your platform
+4. Open Claude Code from the repo root
+5. Run `/orient`
+6. Confirm the first build direction, then start implementation
 
 ---
 
