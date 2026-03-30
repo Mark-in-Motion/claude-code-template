@@ -52,7 +52,21 @@ scripts\setup.bat     # Windows
 
 ## Using with Claude Code
 
-After cloning the template, run `./scripts/setup.sh` first so all `{{PLACEHOLDER}}` tokens are replaced with your project details. Then open Claude Code from the repository root and start with:
+After cloning the template, change into the repo root and run the setup script first so all `{{PLACEHOLDER}}` tokens are replaced with your project details:
+
+```bash
+cd your-project-name
+./scripts/setup.sh
+```
+
+On Windows:
+
+```bat
+cd your-project-name
+scripts\setup.bat
+```
+
+Then open Claude Code from the repository root and start with:
 
 ```text
 /orient
