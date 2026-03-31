@@ -421,6 +421,33 @@ if [[ "$git_init_choice" == "y" || "$git_init_choice" == "Y" ]]; then
 fi
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Point git remote to the new repo
+# ──────────────────────────────────────────────────────────────────────────────
+
+if [[ -d ".git" ]]; then
+    current_remote=$(git remote get-url origin 2>/dev/null || echo "")
+    echo ""
+    if [[ -n "$current_remote" ]]; then
+        echo "Current git remote: $current_remote"
+    fi
+    echo -n "Enter your new GitHub repo URL to update the remote (leave blank to skip): "
+    read new_remote_url
+    if [[ -n "$new_remote_url" ]]; then
+        if git remote get-url origin &>/dev/null; then
+            git remote set-url origin "$new_remote_url"
+        else
+            git remote add origin "$new_remote_url"
+        fi
+        echo "  Remote 'origin' updated to $new_remote_url"
+        echo ""
+        echo "  Note: GitHub no longer accepts passwords for git push over HTTPS."
+        echo "  Use a Personal Access Token (PAT) instead:"
+        echo "    GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)"
+        echo "    Required scopes: repo, workflow"
+    fi
+fi
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Done
 # ──────────────────────────────────────────────────────────────────────────────
 

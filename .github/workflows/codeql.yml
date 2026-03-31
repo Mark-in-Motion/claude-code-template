@@ -1,3 +1,5 @@
+# NOTE: CodeQL requires GitHub Advanced Security, which is only available on
+# public repos or GitHub Enterprise. Delete this file if your repo is private.
 name: CodeQL
 
 on:

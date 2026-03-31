@@ -49,6 +49,16 @@ rmdir /s /q .git
 scripts\setup.bat
 ```
 
+The setup script will prompt you to enter your new GitHub repo URL and update the git remote automatically. Or do it manually after setup:
+
+```bash
+git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+```
+
+> **Note:** GitHub no longer accepts account passwords for `git push` over HTTPS.
+> Use a Personal Access Token instead: GitHub → Settings → Developer settings →
+> Personal access tokens → Tokens (classic). Required scopes: **repo**, **workflow**.
+
 ### Setup flags
 ```bash
 ./scripts/setup.sh             # Interactive setup

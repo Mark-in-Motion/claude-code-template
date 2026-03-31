@@ -26,6 +26,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      # Adapt this step to your stack.
+      # No tests yet? Replace with: npm run build
+      # Vite/React project? Use: npm run build
       - name: Test
         run: npm test
 
